@@ -1,0 +1,1 @@
+INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (1, '123456', 'MIDDLE_WEIGHT', 400, 50,'IDLE');
