@@ -1,6 +1,9 @@
 package com.example.droneapp.controller;
 
 import com.example.droneapp.model.DroneModel;
+import com.example.droneapp.model.MedicationModel;
+import com.example.droneapp.service.MedicationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -11,9 +14,13 @@ import java.util.List;
 @RestController
 public class MedicationController {
 
-//    @GetMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<DroneModel> getAllDrones() {
-//        return droneService.getAllDrones();
-//    }
+    @Autowired
+    private MedicationService medicationService;
+
+
+    @GetMapping("/medications")
+    @ResponseStatus(HttpStatus.OK)
+    public List<MedicationModel> getAllMedications() {
+        return medicationService.getAllMedications();
+    }
 }
