@@ -33,7 +33,6 @@ public class DroneModel implements Serializable  {
     private double weightLimit;
 
     @NotNull(message = "battery cant be null")
-    @Min(value = 40 , message = "battery cant be less than 40 %")
     @Max(value = 100 , message = "battery cant be more than 100 %")
     private double batteryCapacityPercentage;
     @NotNull(message = "state cant be null")

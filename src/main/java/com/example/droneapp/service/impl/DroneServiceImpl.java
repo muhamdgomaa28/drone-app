@@ -4,7 +4,7 @@ import com.example.droneapp.entities.Drone;
 import com.example.droneapp.model.DroneModel;
 import com.example.droneapp.repository.DroneRepository;
 import com.example.droneapp.service.DroneService;
-import com.example.droneapp.service.impl.mappers.DroneMapper;
+import com.example.droneapp.service.mappers.DroneMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class DroneServiceImpl implements DroneService {
-    
+
     @Autowired
     private DroneRepository droneRepository;
 

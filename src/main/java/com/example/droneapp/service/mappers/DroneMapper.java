@@ -1,4 +1,4 @@
-package com.example.droneapp.service.impl.mappers;
+package com.example.droneapp.service.mappers;
 
 
 import com.example.droneapp.entities.Drone;
