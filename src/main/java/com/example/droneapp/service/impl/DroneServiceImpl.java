@@ -76,19 +76,32 @@ public class DroneServiceImpl implements DroneService {
 
     }
 
-    private void assignMedicationsItemsToDrone(Drone drone, List<Medication> medications) {
-        medications.forEach(item -> {
-            DroneMedication droneMedication = DroneMedication
-                    .builder()
-                    .medication(item)
-                    .drone(drone).build();
-            droneMedication.setAssignedAt(LocalDateTime.now());
-            droneMedicationRepository.save(droneMedication);
-        });
-        drone.setState(StateEnum.LOADING);
+    @Override
+    public void changeDroneState(String serialNumber, StateEnum stateEnum) {
+        Drone drone = droneRepository.findBySerialNumber(serialNumber)
+                .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
+
+        drone.setState(stateEnum);
         droneRepository.save(drone);
+
     }
 
+    private void assignMedicationsItemsToDrone(Drone drone, List<Medication> medications) {
+        medications.forEach(item -> {
+            DroneMedication droneMedication = buildDroneMedication(drone, item);
+            droneMedicationRepository.save(droneMedication);
+        });
+        changeDroneState(drone.getSerialNumber(), StateEnum.LOADING);
+    }
+
+    private DroneMedication buildDroneMedication(Drone drone, Medication item) {
+        return DroneMedication
+                .builder()
+                .medication(item)
+                .drone(drone)
+                .assignedAt(LocalDateTime.now())
+                .build();
+    }
 
 
 }

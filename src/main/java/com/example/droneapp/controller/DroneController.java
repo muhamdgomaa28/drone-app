@@ -3,6 +3,7 @@ package com.example.droneapp.controller;
 import com.example.droneapp.entities.Drone;
 import com.example.droneapp.model.DroneModel;
 import com.example.droneapp.model.MedicationLoadRequestModel;
+import com.example.droneapp.model.enums.StateEnum;
 import com.example.droneapp.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class DroneController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<DroneModel> getAllDrones() {
+
+        int g = 5/0;
+
         return droneService.getAllDrones();
     }
 
@@ -50,6 +54,13 @@ public class DroneController {
     public List<DroneModel> getAvailableDronesForLoading() {
         return droneService.getAvailableDroneForLoading();
     }
+
+    @PostMapping("state/change")
+    @ResponseStatus(HttpStatus.OK)
+    public void changeDroneState(@RequestParam String serialNumber, @RequestParam StateEnum stateEnum) {
+        droneService.changeDroneState(serialNumber, stateEnum);
+    }
+
 
 
 }
