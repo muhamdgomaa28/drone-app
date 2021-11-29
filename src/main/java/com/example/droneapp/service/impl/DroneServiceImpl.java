@@ -62,19 +62,27 @@ public class DroneServiceImpl implements DroneService {
 
     }
 
+    @Override
+    public Double checkDroneBatteryLevel(String serialNumber) {
+        Drone drone = droneRepository.findBySerialNumber(serialNumber)
+                .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
+        return drone.getBatteryCapacityPercentage();
+
+    }
+
     private void assignMedicationsItemsToDrone(Drone drone, List<Medication> medications) {
-        List<DroneMedication> droneMedications = new ArrayList<>();
         medications.forEach(item -> {
-            DroneMedication droneMedication = new DroneMedication();
-            droneMedication.setMedication(item);
-            droneMedication.setDrone(drone);
+            DroneMedication droneMedication = DroneMedication
+                    .builder()
+                    .medication(item)
+                    .drone(drone).build();
             droneMedication.setAssignedAt(LocalDateTime.now());
-            droneMedications.add(droneMedication);
-
+            droneMedicationRepository.save(droneMedication);
         });
-        droneMedicationRepository.saveAll(droneMedications);
-
         drone.setState(StateEnum.LOADING);
         droneRepository.save(drone);
     }
+
+
+
 }

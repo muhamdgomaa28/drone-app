@@ -39,5 +39,11 @@ public class DroneController {
          droneService.loadMedicationsToDrone(medicationLoadRequestModel.getMedicationCodes(), medicationLoadRequestModel.getSerialNumber());
     }
 
+    @GetMapping("battery-level")
+    @ResponseStatus(HttpStatus.OK)
+    public Double getDroneBatteryLevel(@RequestParam String serialNumber) {
+        return droneService.checkDroneBatteryLevel(serialNumber);
+    }
+
 
 }

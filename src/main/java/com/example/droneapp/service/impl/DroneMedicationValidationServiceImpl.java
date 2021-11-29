@@ -40,9 +40,11 @@ public class DroneMedicationValidationServiceImpl implements DroneMedicationVali
     public void checkMedicationWeightAgainstDrone(List<Medication> medications, Drone drone){
 
         Double allMedicationsWeight = 0.0;
+        Double availableSpace= 0.0;
          if(drone.getState().equals(StateEnum.LOADING)) {
              List<Medication> loadedItemsOnDrone = getLoadedItemsWithinDrone(drone);
              allMedicationsWeight = getMedicationsWeight(loadedItemsOnDrone) + getMedicationsWeight(medications);
+             availableSpace = drone.getWeightLimit() - getMedicationsWeight(loadedItemsOnDrone);
          }
          else {
              allMedicationsWeight =  getMedicationsWeight(medications);
@@ -50,7 +52,7 @@ public class DroneMedicationValidationServiceImpl implements DroneMedicationVali
          }
 
         if(allMedicationsWeight > drone.getWeightLimit()) {
-            throw new BusinessException("Drone not ready to loaded items with weight " + allMedicationsWeight + " the limit is " + drone.getWeightLimit());
+            throw new BusinessException("Drone not ready to loaded items with weight " + allMedicationsWeight +  "space available "+ (drone.getState().equals(StateEnum.LOADING) ? availableSpace: drone.getWeightLimit()));
 
         }
     }
