@@ -11,4 +11,5 @@ public interface DroneService {
     Drone registerDrone(DroneModel drone);
     void loadMedicationsToDrone(List<String> medicationCodes, String serialNumber);
     Double checkDroneBatteryLevel(String serialNumber);
+    List<DroneModel> getAvailableDroneForLoading();
 }

@@ -1,7 +1,7 @@
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (1, '123456', 'MIDDLE_WEIGHT', 400, 100,'IDLE');
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (2, '456789', 'MIDDLE_WEIGHT', 500, 100,'IDLE');
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (3, '147258', 'MIDDLE_WEIGHT', 300, 50,'IDLE');
-INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (4, '369258', 'MIDDLE_WEIGHT', 200, 70,'IDLE');
+INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (4, '369258', 'MIDDLE_WEIGHT', 200, 70,'LOADED');
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (5, '987456', 'MIDDLE_WEIGHT', 500, 80,'IDLE');
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (6, '654789', 'MIDDLE_WEIGHT', 500, 24,'IDLE');
 INSERT INTO drone (id, serial_number, model, weight_limit, battery_capacity_percentage, state ) VALUES (7, '145236', 'MIDDLE_WEIGHT', 350, 25,'IDLE');

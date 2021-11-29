@@ -16,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,6 +64,15 @@ public class DroneServiceImpl implements DroneService {
         Drone drone = droneRepository.findBySerialNumber(serialNumber)
                 .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
         return drone.getBatteryCapacityPercentage();
+
+    }
+
+    @Override
+    public List<DroneModel> getAvailableDroneForLoading() {
+        return droneRepository.findAllByStateIn(Arrays.asList(StateEnum.IDLE, StateEnum.LOADING))
+                .stream()
+                .map(drone -> droneMapper.toModel(drone))
+                .collect(Collectors.toList());
 
     }
 

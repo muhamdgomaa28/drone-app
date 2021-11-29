@@ -45,5 +45,11 @@ public class DroneController {
         return droneService.checkDroneBatteryLevel(serialNumber);
     }
 
+    @GetMapping("available")
+    @ResponseStatus(HttpStatus.OK)
+    public List<DroneModel> getAvailableDronesForLoading() {
+        return droneService.getAvailableDroneForLoading();
+    }
+
 
 }

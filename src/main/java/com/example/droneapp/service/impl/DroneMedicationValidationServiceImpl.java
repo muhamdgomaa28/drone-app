@@ -52,7 +52,7 @@ public class DroneMedicationValidationServiceImpl implements DroneMedicationVali
          }
 
         if(allMedicationsWeight > drone.getWeightLimit()) {
-            throw new BusinessException("Drone not ready to loaded items with weight " + allMedicationsWeight +  "space available "+ (drone.getState().equals(StateEnum.LOADING) ? availableSpace: drone.getWeightLimit()));
+            throw new BusinessException("Drone not ready to loaded items with weight " + allMedicationsWeight +  " space available in drone "+ (drone.getState().equals(StateEnum.LOADING) ? availableSpace: drone.getWeightLimit()));
 
         }
     }
