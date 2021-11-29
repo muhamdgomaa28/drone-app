@@ -1,7 +1,6 @@
 package com.example.droneapp.service.impl;
 
 import com.example.droneapp.entities.Drone;
-import com.example.droneapp.entities.DroneMedication;
 import com.example.droneapp.entities.Medication;
 import com.example.droneapp.exception.BusinessException;
 import com.example.droneapp.model.enums.StateEnum;
@@ -18,26 +17,26 @@ public class DroneMedicationValidationServiceImpl implements DroneMedicationVali
 
 
     @Override
-    public void validateMedicationWithDrone(List<Medication> medications, Drone drone) {
-        checkDroneStatus(drone);
-        checkDroneBatteryLevel(drone);
-        checkMedicationWeightAgainstDrone(medications, drone);
+    public void validateMedicationsItemsWithDrone(List<Medication> medications, Drone drone) {
+        validateDroneStatus(drone);
+        validateDroneBatteryLevel(drone);
+        validateMedicationWeightAgainstDrone(medications, drone);
     }
 
 
-    public void checkDroneStatus(Drone drone) {
+    public void validateDroneStatus(Drone drone) {
     if(!drone.getState().equals(StateEnum.IDLE) && !drone.getState().equals(StateEnum.LOADING)){
         throw new BusinessException("Drone not ready to loaded items with state "+ drone.getState());
     }
     }
 
-    public void checkDroneBatteryLevel(Drone drone) {
+    public void validateDroneBatteryLevel(Drone drone) {
         if(drone.getBatteryCapacityPercentage() <= 25) {
             throw new BusinessException("Drone not ready to loaded items with battery " + drone.getBatteryCapacityPercentage());
         }
     }
 
-    public void checkMedicationWeightAgainstDrone(List<Medication> medications, Drone drone){
+    public void validateMedicationWeightAgainstDrone(List<Medication> medications, Drone drone){
 
         Double allMedicationsWeight = 0.0;
         Double availableSpace= 0.0;

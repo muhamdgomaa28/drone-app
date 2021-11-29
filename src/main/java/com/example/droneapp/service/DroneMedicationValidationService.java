@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface DroneMedicationValidationService {
 
-    void validateMedicationWithDrone(List<Medication> medications, Drone drone);
+    void validateMedicationsItemsWithDrone(List<Medication> medications, Drone drone);
 }

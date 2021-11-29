@@ -24,9 +24,6 @@ public class DroneController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<DroneModel> getAllDrones() {
-
-        int g = 5/0;
-
         return droneService.getAllDrones();
     }
 

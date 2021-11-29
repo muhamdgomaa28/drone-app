@@ -54,7 +54,7 @@ public class DroneServiceImpl implements DroneService {
         Drone drone = droneRepository.findBySerialNumber(serialNumber)
                 .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
         List<Medication> medications = medicationRepository.findAllByCodeIn(medicationCodes);
-        droneMedicationValidationService.validateMedicationWithDrone(medications, drone);
+        droneMedicationValidationService.validateMedicationsItemsWithDrone(medications, drone);
         assignMedicationsItemsToDrone(drone, medications);
 
     }
