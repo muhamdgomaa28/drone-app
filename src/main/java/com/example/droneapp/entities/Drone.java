@@ -9,6 +9,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -36,6 +37,6 @@ public class Drone  implements Serializable {
     private StateEnum state;
 
     @OneToMany(mappedBy = "drone")
-    Set<DroneMedication> droneMedications;
+    List<DroneMedication> droneMedications;
 
 }

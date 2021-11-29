@@ -2,6 +2,7 @@ package com.example.droneapp.controller;
 
 import com.example.droneapp.entities.Drone;
 import com.example.droneapp.model.DroneModel;
+import com.example.droneapp.model.MedicationLoadRequestModel;
 import com.example.droneapp.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,4 +31,13 @@ public class DroneController {
     public Drone registerDrone(@Valid @RequestBody DroneModel droneModel) {
         return droneService.registerDrone(droneModel);
     }
+
+
+    @PostMapping("medication/load")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void loadMedicationItems(@Valid @RequestBody MedicationLoadRequestModel medicationLoadRequestModel) {
+         droneService.loadMedicationsToDrone(medicationLoadRequestModel.getMedicationCodes(), medicationLoadRequestModel.getSerialNumber());
+    }
+
+
 }

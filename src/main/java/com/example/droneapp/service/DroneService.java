@@ -9,4 +9,5 @@ public interface DroneService {
 
     List<DroneModel> getAllDrones();
     Drone registerDrone(DroneModel drone);
+    void loadMedicationsToDrone(List<String> medicationCodes, String serialNumber);
 }

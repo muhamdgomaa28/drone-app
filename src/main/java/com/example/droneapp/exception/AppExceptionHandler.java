@@ -24,7 +24,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleAnyException(Exception ex, WebRequest request){
         String errorDescription = ex.getLocalizedMessage();
         if(errorDescription == null) errorDescription = ex.toString();
-        ErrorMessage errorMessage = new ErrorMessage(new Date(),"Adam able to handle any exception: "+ errorDescription);
+        ErrorMessage errorMessage = new ErrorMessage(new Date(),"" + errorDescription);
         return new ResponseEntity<>( errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR );
     }
 
@@ -32,14 +32,14 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {NoSuchElementException.class})
     public ResponseEntity<Object> handleNoSuchElementException(NoSuchElementException ex, WebRequest request){
         StringBuilder errorDescription = new StringBuilder(ex.getClass()+": " + ex.getLocalizedMessage());
-        ErrorMessage errorMessage = new ErrorMessage( new Date(),"Adam found no element eception: " + errorDescription);
+        ErrorMessage errorMessage = new ErrorMessage( new Date(),"" + errorDescription);
         return new ResponseEntity<>( errorMessage, new HttpHeaders(), HttpStatus.NOT_FOUND );
     }
     @ExceptionHandler(value = {NullPointerException.class})
     public ResponseEntity<Object> handleNullPointerException(NullPointerException ex, WebRequest request){
         String errorDescription = ex.getLocalizedMessage();
         if(errorDescription == null) errorDescription = ex.toString();
-        ErrorMessage errorMessage = new ErrorMessage( new Date(),"Adam found error: " + errorDescription);
+        ErrorMessage errorMessage = new ErrorMessage( new Date(),"" + errorDescription);
         return new ResponseEntity<>( errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR );
     }
     @ExceptionHandler(value = {BadRequestException.class})

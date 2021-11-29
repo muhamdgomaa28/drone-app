@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,5 +25,5 @@ public class Medication {
     private String imageUrl;
 
     @OneToMany(mappedBy = "medication")
-    Set<DroneMedication> droneMedications;
+    List<DroneMedication> droneMedications;
 }
