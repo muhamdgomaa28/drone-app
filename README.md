@@ -5,12 +5,10 @@ Technology
 Programming Language Java (version 8 and above)
 
 Remote Service Protocol REST
-
 Testing Junit, Mockito
-
 Build Maven
 
-*Framework: Spring Boot
+*Framework: Spring Boot 
 
 *Database: H2 database
 
@@ -30,13 +28,13 @@ dockerizing the application (done)
 
 How to run ? 
 
-through docker : 
+Through docker : 
 
 1 - pull image from docker hub > > docker pull 01061263949/drone-app:latest
 
 2 - run the container (here we run on port 9000 ) >> docker run -p 9000:8080 drone-app:latest
 
-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 ordinary way :
