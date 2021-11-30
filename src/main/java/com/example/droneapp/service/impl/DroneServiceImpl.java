@@ -12,6 +12,7 @@ import com.example.droneapp.repository.MedicationRepository;
 import com.example.droneapp.service.DroneMedicationValidationService;
 import com.example.droneapp.service.DroneService;
 import com.example.droneapp.service.mappers.DroneMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class DroneServiceImpl implements DroneService {
 
     @Autowired
@@ -40,17 +42,22 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public List<DroneModel> getAllDrones() {
+        log.info("retrieve all drones");
         return droneRepository.findAll().stream().map(drone -> droneMapper.toModel(drone)).collect(Collectors.toList());
     }
 
     @Override
     public Drone registerDrone(DroneModel droneModel) {
+        log.info("register new drone with serial number :{}", droneModel.getSerialNumber());
+
         Drone drone=  droneMapper.toEntity(droneModel);
         return droneRepository.save(drone);
     }
 
     @Override
     public void loadMedicationsToDrone(List<String> medicationCodes, String serialNumber) {
+        log.info("load medication items to drone  with serial number :{}", serialNumber);
+
         Drone drone = droneRepository.findBySerialNumber(serialNumber)
                 .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
         List<Medication> medications = medicationRepository.findAllByCodeIn(medicationCodes);
@@ -61,6 +68,8 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public Double checkDroneBatteryLevel(String serialNumber) {
+        log.info("check battery level to drone  with serial number :{}",serialNumber);
+
         Drone drone = droneRepository.findBySerialNumber(serialNumber)
                 .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
         return drone.getBatteryCapacityPercentage();
@@ -69,6 +78,8 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public List<DroneModel> getAvailableDroneForLoading() {
+        log.info("get all drone ready for loading ");
+
         return droneRepository.findAllByStateIn(Arrays.asList(StateEnum.IDLE, StateEnum.LOADING))
                 .stream()
                 .map(drone -> droneMapper.toModel(drone))
@@ -78,6 +89,7 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public void changeDroneState(String serialNumber, StateEnum stateEnum) {
+        log.info("change drone status");
         Drone drone = droneRepository.findBySerialNumber(serialNumber)
                 .orElseThrow(() -> new BusinessException("Could not find Drone with serial Number provided"));
 
