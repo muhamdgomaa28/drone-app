@@ -3,10 +3,15 @@
 Technology
 
 Programming Language Java (version 8 and above)
+
 Remote Service Protocol REST
+
 Testing Junit, Mockito
+
 Build Maven
+
 *Framework: Spring Boot
+
 *Database: H2 database
 
 
