@@ -16,14 +16,16 @@ Basic UI - adding swagger config. on : http://localhost:9000/swagger-ui.html
 
 
 Meaningful Unit tests. ( done )
+
 Readme file with installation guides.( done )
+
 dockerizing the application (done)
 
 
 
 How to run ? 
 
-through docker >> 
+through docker : 
 
 1 - pull image from docker hub > > docker pull 01061263949/drone-app:latest
 
@@ -32,7 +34,7 @@ through docker >>
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-ordinary way >>
+ordinary way :
 
 make sure that java version > java 8 is installed
 clone Repository from github  : https://github.com/muhamdgomaa28/drone-app/new/master
