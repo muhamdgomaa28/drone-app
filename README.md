@@ -13,6 +13,8 @@ Build Maven
 Other considerations
 
 Basic UI - adding swagger config. on : http://localhost:9000/swagger-ui.html
+
+
 Meaningful Unit tests. ( done )
 Readme file with installation guides.( done )
 dockerizing the application (done)
